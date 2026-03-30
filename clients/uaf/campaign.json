@@ -2,7 +2,7 @@
   "client": "UAF",
   "client_logo": "assets/logos/uaf.png",
   "campaign_name": "Roozeeta Petitie — Always-on Q2 2026",
-  "campaign_brief": "Petitiecampagne rondom Roozeeta, een vluchtelingenarts die niet mag werken. We testen 5 hooks in 3 visuele varianten (ad met foto, alleen tekst, foto met overlay) op Facebook en Instagram feed. Doelgroep: warme achterban + lookalike. Landingspagina: steun.uaf.nl/roozeeta.",
+  "campaign_brief": "Petitiecampagne rondom Roozeeta, een vluchtelingenarts die niet mag werken. We testen 5 hooks in 3 visuele varianten (ad met foto, alleen tekst, foto met overlay) op Facebook en Instagram feed. Meta Advantage+ mixt alle primaire teksten, headlines en descriptions automatisch. Doelgroep: warme achterban + lookalike. Landingspagina: steun.uaf.nl/roozeeta.",
   "landing_pages": [
     {
       "label": "Petitie — steun.uaf.nl/roozeeta",
@@ -18,9 +18,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Ze is arts. Ze heeft haar diploma. Ze wil niets liever dan werken.\n\nMaar het systeem zegt nee. Roozeeta mag jouw bloed niet prikken — niet omdat ze het niet kan, maar omdat ze moet wachten. Twee jaar. Op een vergunning.\n\nDat kan anders. Teken de petitie.",
-        "headline": "Ze mag jouw bloed niet prikken.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Ze scoorde 2e van 1.000 kandidaten. Nu mag ze geen bloed prikken. Help mee dit te veranderen — teken de petitie.",
+        "headline": "Dit moet anders. Teken nu.",
+        "description": "Al 4.200+ handtekeningen",
         "cta": "Teken de petitie"
       }
     },
@@ -32,9 +32,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Ze is arts. Ze heeft haar diploma. Ze wil niets liever dan werken.\n\nMaar het systeem zegt nee. Roozeeta mag jouw bloed niet prikken — niet omdat ze het niet kan, maar omdat ze moet wachten. Twee jaar. Op een vergunning.\n\nDat kan anders. Teken de petitie.",
-        "headline": "Ze mag jouw bloed niet prikken.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Ze scoorde 2e van 1.000 kandidaten. Nu mag ze geen bloed prikken. Help mee dit te veranderen — teken de petitie.",
+        "headline": "Arts klaar. Systeem niet.",
+        "description": "Teken de petitie",
         "cta": "Teken de petitie"
       }
     },
@@ -46,9 +46,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Ze is arts. Ze heeft haar diploma. Ze wil niets liever dan werken.\n\nMaar het systeem zegt nee. Roozeeta mag jouw bloed niet prikken — niet omdat ze het niet kan, maar omdat ze moet wachten. Twee jaar. Op een vergunning.\n\nDat kan anders. Teken de petitie.",
-        "headline": "Ze mag jouw bloed niet prikken.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Ze scoorde 2e van 1.000 kandidaten. Nu mag ze geen bloed prikken. Help mee dit te veranderen — teken de petitie.",
+        "headline": "2 jaar wachten? Onacceptabel.",
+        "description": "Help gevlucht talent",
         "cta": "Teken de petitie"
       }
     },
@@ -60,9 +60,9 @@
       "angle": "systeem",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Roozeeta is arts. Afgestudeerd, gemotiveerd, klaar om aan de slag te gaan.\n\nMaar het systeem zegt: wacht maar. Twee jaar wachten op papieren, terwijl de zorg schreeuwt om mensen.\n\nDit is niet logisch. Dit moet anders. Teken de petitie.",
-        "headline": "Roozeeta is arts. Het systeem zegt: wacht maar.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Roozeeta is arts. Spreekt vloeiend Nederlands. Maar moet 2 jaar wachten op één toets. Vind jij dat ook gek? Teken de petitie.",
+        "headline": "Arts klaar. Systeem niet.",
+        "description": "Teken de petitie",
         "cta": "Teken de petitie"
       }
     },
@@ -74,9 +74,9 @@
       "angle": "systeem",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Roozeeta is arts. Afgestudeerd, gemotiveerd, klaar om aan de slag te gaan.\n\nMaar het systeem zegt: wacht maar. Twee jaar wachten op papieren, terwijl de zorg schreeuwt om mensen.\n\nDit is niet logisch. Dit moet anders. Teken de petitie.",
-        "headline": "Roozeeta is arts. Het systeem zegt: wacht maar.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Roozeeta is arts. Spreekt vloeiend Nederlands. Maar moet 2 jaar wachten op één toets. Vind jij dat ook gek? Teken de petitie.",
+        "headline": "2 jaar wachten? Onacceptabel.",
+        "description": "Help gevlucht talent",
         "cta": "Teken de petitie"
       }
     },
@@ -88,9 +88,9 @@
       "angle": "systeem",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Roozeeta is arts. Afgestudeerd, gemotiveerd, klaar om aan de slag te gaan.\n\nMaar het systeem zegt: wacht maar. Twee jaar wachten op papieren, terwijl de zorg schreeuwt om mensen.\n\nDit is niet logisch. Dit moet anders. Teken de petitie.",
-        "headline": "Roozeeta is arts. Het systeem zegt: wacht maar.",
-        "description": "steun.uaf.nl",
+        "primary_text": "Roozeeta is arts. Spreekt vloeiend Nederlands. Maar moet 2 jaar wachten op één toets. Vind jij dat ook gek? Teken de petitie.",
+        "headline": "Zet jouw naam erbij ✍️",
+        "description": "Al 4.200+ handtekeningen",
         "cta": "Teken de petitie"
       }
     },
@@ -102,10 +102,10 @@
       "angle": "empathie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Een arts staat klaar om te helpen. Een patiënt wacht op hulp. Maar bureaucratie houdt ze uit elkaar.\n\nRoozeeta is opgeleid arts en wil niets liever dan aan het werk. Het enige wat haar tegenhoudt: een systeem dat niet meewerkt.\n\nLaat je stem horen.",
-        "headline": "Een arts staat klaar. Een patiënt wacht op hulp.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "Een arts die klaarstaat om te helpen. Maar het systeem zegt: wacht maar. Teken de petitie en zeg dat dit anders moet. ✍️",
+        "headline": "2 jaar wachten? Onacceptabel.",
+        "description": "Help gevlucht talent",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -116,10 +116,10 @@
       "angle": "empathie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Een arts staat klaar om te helpen. Een patiënt wacht op hulp. Maar bureaucratie houdt ze uit elkaar.\n\nRoozeeta is opgeleid arts en wil niets liever dan aan het werk. Het enige wat haar tegenhoudt: een systeem dat niet meewerkt.\n\nLaat je stem horen.",
-        "headline": "Een arts staat klaar. Een patiënt wacht op hulp.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "Een arts die klaarstaat om te helpen. Maar het systeem zegt: wacht maar. Teken de petitie en zeg dat dit anders moet. ✍️",
+        "headline": "Zet jouw naam erbij ✍️",
+        "description": "Al 4.200+ handtekeningen",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -130,10 +130,10 @@
       "angle": "empathie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Een arts staat klaar om te helpen. Een patiënt wacht op hulp. Maar bureaucratie houdt ze uit elkaar.\n\nRoozeeta is opgeleid arts en wil niets liever dan aan het werk. Het enige wat haar tegenhoudt: een systeem dat niet meewerkt.\n\nLaat je stem horen.",
-        "headline": "Een arts staat klaar. Een patiënt wacht op hulp.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "Een arts die klaarstaat om te helpen. Maar het systeem zegt: wacht maar. Teken de petitie en zeg dat dit anders moet. ✍️",
+        "headline": "Stop onnodige wachttijden",
+        "description": "Teken de petitie",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -144,10 +144,10 @@
       "angle": "urgentie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Twee jaar wachten. Niet op een opleiding, niet op ervaring — op papieren.\n\nRoozeeta is arts. Ze kan levens redden. Maar ze mag niet werken zolang haar vergunning niet rond is. Terwijl de zorg ondertussen mensen tekortkomt.\n\nLaat je stem horen.",
-        "headline": "Twee jaar wachten om levens te redden.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "2 jaar wachten om te mogen werken als arts. In een land met een zorgtekort. Klinkt dat logisch? Teken de petitie. ✍️",
+        "headline": "Zet jouw naam erbij ✍️",
+        "description": "Al 4.200+ handtekeningen",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -158,10 +158,10 @@
       "angle": "urgentie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Twee jaar wachten. Niet op een opleiding, niet op ervaring — op papieren.\n\nRoozeeta is arts. Ze kan levens redden. Maar ze mag niet werken zolang haar vergunning niet rond is. Terwijl de zorg ondertussen mensen tekortkomt.\n\nLaat je stem horen.",
-        "headline": "Twee jaar wachten om levens te redden.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "2 jaar wachten om te mogen werken als arts. In een land met een zorgtekort. Klinkt dat logisch? Teken de petitie. ✍️",
+        "headline": "Stop onnodige wachttijden",
+        "description": "Teken de petitie",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -172,10 +172,10 @@
       "angle": "urgentie",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Twee jaar wachten. Niet op een opleiding, niet op ervaring — op papieren.\n\nRoozeeta is arts. Ze kan levens redden. Maar ze mag niet werken zolang haar vergunning niet rond is. Terwijl de zorg ondertussen mensen tekortkomt.\n\nLaat je stem horen.",
-        "headline": "Twee jaar wachten om levens te redden.",
-        "description": "steun.uaf.nl",
-        "cta": "Laat je stem horen"
+        "primary_text": "2 jaar wachten om te mogen werken als arts. In een land met een zorgtekort. Klinkt dat logisch? Teken de petitie. ✍️",
+        "headline": "Dit moet anders. Teken nu.",
+        "description": "Help gevlucht talent",
+        "cta": "Teken de petitie"
       }
     },
     {
@@ -186,9 +186,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Zij wil werken. Ze is opgeleid. Ze is gemotiveerd. Ze is arts.\n\nMaar Nederland zegt nee. Niet omdat ze niet goed genoeg is — maar omdat het systeem haar niet laat.\n\nHelp Roozeeta en andere vluchtelingartsen. Teken de petitie.",
-        "headline": "Zij wil werken. Nederland zegt nee",
-        "description": "steun.uaf.nl",
+        "primary_text": "Klaar om levens te redden, maar vastgelopen in bureaucratie. Zet jouw naam erbij en help Roozeeta aan het werk.",
+        "headline": "Stop onnodige wachttijden",
+        "description": "Teken de petitie",
         "cta": "Teken de petitie"
       }
     },
@@ -200,9 +200,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Zij wil werken. Ze is opgeleid. Ze is gemotiveerd. Ze is arts.\n\nMaar Nederland zegt nee. Niet omdat ze niet goed genoeg is — maar omdat het systeem haar niet laat.\n\nHelp Roozeeta en andere vluchtelingartsen. Teken de petitie.",
-        "headline": "Zij wil werken. Nederland zegt nee",
-        "description": "steun.uaf.nl",
+        "primary_text": "Klaar om levens te redden, maar vastgelopen in bureaucratie. Zet jouw naam erbij en help Roozeeta aan het werk.",
+        "headline": "Dit moet anders. Teken nu.",
+        "description": "Help gevlucht talent",
         "cta": "Teken de petitie"
       }
     },
@@ -214,9 +214,9 @@
       "angle": "confronterend",
       "landing_page_url": "https://steun.uaf.nl/roozeeta",
       "copy": {
-        "primary_text": "Zij wil werken. Ze is opgeleid. Ze is gemotiveerd. Ze is arts.\n\nMaar Nederland zegt nee. Niet omdat ze niet goed genoeg is — maar omdat het systeem haar niet laat.\n\nHelp Roozeeta en andere vluchtelingartsen. Teken de petitie.",
-        "headline": "Zij wil werken. Nederland zegt nee",
-        "description": "steun.uaf.nl",
+        "primary_text": "Klaar om levens te redden, maar vastgelopen in bureaucratie. Zet jouw naam erbij en help Roozeeta aan het werk.",
+        "headline": "Arts klaar. Systeem niet.",
+        "description": "Al 4.200+ handtekeningen",
         "cta": "Teken de petitie"
       }
     }
