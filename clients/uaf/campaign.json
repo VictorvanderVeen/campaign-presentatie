@@ -1,0 +1,78 @@
+{
+  "client": "UAF",
+  "client_logo": "assets/logos/uaf.png",
+  "campaign_name": "Studieboeken Always-on Q2 2026",
+  "campaign_brief": "We testen 3 angles (urgentie, persoonlijk verhaal, impact) op Facebook en Instagram feed. Doelgroep: warme donateurlijst + lookalike 1%. Budget: \u20ac4.500/maand. KPI: minimaal 2,5% CTR en \u20ac15 CPA.",
+  "landing_pages": [
+    {
+      "label": "Variant A \u2014 Systeemprobleem",
+      "url": "https://www.uaf.nl/doneer/studieboeken-a"
+    },
+    {
+      "label": "Variant B \u2014 Persoonlijk verhaal",
+      "url": "https://www.uaf.nl/doneer/studieboeken-b"
+    },
+    {
+      "label": "Variant C \u2014 Impact",
+      "url": "https://www.uaf.nl/doneer/studieboeken-c"
+    }
+  ],
+  "ads": [
+    {
+      "id": "uaf-sb-01",
+      "image": "assets/images/uaf-sb-01.png",
+      "placement": "facebook_feed",
+      "format": "1080x1080",
+      "angle": "urgentie",
+      "landing_page_url": "https://www.uaf.nl/doneer/studieboeken-a",
+      "copy": {
+        "primary_text": "Elk jaar beginnen vluchtelingstudenten zonder studieboeken aan hun opleiding. Niet omdat ze niet willen, maar omdat ze het simpelweg niet kunnen betalen.\n\nVoor slechts \u20ac25 geef je een student toegang tot de boeken die hij of zij nodig heeft om te slagen. Doe je mee?",
+        "headline": "Geef een studieboek cadeau",
+        "description": "uaf.nl",
+        "cta": "Doneer nu"
+      }
+    },
+    {
+      "id": "uaf-sb-02",
+      "image": "assets/images/uaf-sb-02.png",
+      "placement": "instagram_feed",
+      "format": "1080x1080",
+      "angle": "persoonlijk verhaal",
+      "landing_page_url": "https://www.uaf.nl/doneer/studieboeken-b",
+      "copy": {
+        "primary_text": "\u201cToen ik begon aan mijn studie psychologie had ik geen geld voor boeken. Ik leende aantekeningen van medestudenten en hoopte dat het genoeg was. Dankzij UAF kon ik alsnog mijn boeken kopen \u2014 en mijn studie afmaken.\u201d \u2014 Amira, 26 jaar\n\nHelp studenten zoals Amira.",
+        "headline": "Amira kon haar studie afmaken",
+        "description": "Steun vluchtelingstudenten via UAF",
+        "cta": "Doneer nu"
+      }
+    },
+    {
+      "id": "uaf-sb-03",
+      "image": "assets/images/uaf-sb-03.png",
+      "placement": "facebook_feed",
+      "format": "1200x628",
+      "angle": "impact",
+      "landing_page_url": "https://www.uaf.nl/doneer/studieboeken-c",
+      "copy": {
+        "primary_text": "In 2025 hielp UAF 312 studenten met studieboeken. Dit jaar willen we dat verdubbelen. Met jouw donatie van \u20ac25 krijgt \u00e9\u00e9n student een volledig boekenpakket.\n\n\u2705 100% gaat naar studiemateriaal\n\u2705 Al 75% van ons doel bereikt\n\u2705 Elke bijdrage telt",
+        "headline": "312 studenten geholpen \u2014 help jij de volgende?",
+        "description": "uaf.nl/studieboeken",
+        "cta": "Doe mee"
+      }
+    },
+    {
+      "id": "uaf-sb-04",
+      "image": "assets/images/uaf-sb-04.png",
+      "placement": "instagram_feed",
+      "format": "1080x1920",
+      "angle": "urgentie",
+      "landing_page_url": "https://www.uaf.nl/doneer/studieboeken-a",
+      "copy": {
+        "primary_text": "Het nieuwe studiejaar begint over 3 maanden. Honderden vluchtelingstudenten weten nog niet of ze hun boeken kunnen betalen. Wacht niet \u2014 doneer vandaag nog een studieboek.",
+        "headline": "Over 3 maanden begint het studiejaar",
+        "description": "uaf.nl",
+        "cta": "Doneer nu"
+      }
+    }
+  ]
+}

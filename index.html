@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campagne Presentatie</title>
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #f0f2f5;
+  color: #1c1e21;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #1877f2; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== LOADING ===== */
+#loading {
+  display: flex; align-items: center; justify-content: center;
+  height: 100vh; font-size: 1.1rem; color: #65676b;
+}
+#loading .spinner {
+  width: 32px; height: 32px; border: 3px solid #e4e6eb;
+  border-top-color: #1877f2; border-radius: 50%;
+  animation: spin .8s linear infinite; margin-right: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#app { display: none; }
+
+/* ===== HEADER ===== */
+.header {
+  background: #fff; border-bottom: 1px solid #dddfe2;
+  padding: 28px 0 24px; position: sticky; top: 0; z-index: 100;
+}
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+}
+.header-top {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.client-logo {
+  width: 48px; height: 48px; border-radius: 8px;
+  object-fit: contain; background: #f0f2f5; padding: 4px;
+}
+.client-logo-placeholder {
+  width: 48px; height: 48px; border-radius: 8px;
+  background: #1877f2; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 1.2rem;
+}
+.header-title {
+  font-size: 1.5rem; font-weight: 700; color: #1c1e21;
+}
+.ad-count {
+  background: #e7f3ff; color: #1877f2; font-size: .85rem;
+  font-weight: 600; padding: 4px 12px; border-radius: 20px;
+  margin-left: auto;
+}
+.campaign-brief {
+  color: #65676b; font-size: .95rem; margin-bottom: 16px;
+  max-width: 800px; line-height: 1.6;
+}
+.lp-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.lp-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #f0f2f5; color: #1c1e21; padding: 8px 16px;
+  border-radius: 8px; font-size: .85rem; font-weight: 500;
+  transition: background .15s;
+}
+.lp-btn:hover { background: #e4e6eb; text-decoration: none; }
+.lp-btn svg { width: 14px; height: 14px; }
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  background: #fff; border-bottom: 1px solid #dddfe2;
+  padding: 12px 0; position: sticky; top: 117px; z-index: 99;
+}
+.filter-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+.filter-group { display: flex; align-items: center; gap: 6px; }
+.filter-label { font-size: .8rem; color: #65676b; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+.filter-btn {
+  background: #f0f2f5; border: none; color: #1c1e21;
+  padding: 6px 14px; border-radius: 20px; font-size: .85rem;
+  cursor: pointer; font-weight: 500; transition: all .15s;
+}
+.filter-btn:hover { background: #e4e6eb; }
+.filter-btn.active { background: #1877f2; color: #fff; }
+
+/* ===== AD GRID ===== */
+.ad-grid {
+  max-width: 1200px; margin: 0 auto; padding: 24px;
+  display: flex; flex-direction: column; gap: 32px;
+}
+.ad-card {
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.ad-card[data-visible="false"] { display: none; }
+
+/* ===== FEED MOCK-UP (LEFT) ===== */
+.mock-col {
+  padding: 24px;
+  background: #f8f9fa;
+  display: flex; align-items: flex-start; justify-content: center;
+}
+
+/* Shared feed frame */
+.feed-frame {
+  background: #fff; border-radius: 8px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  width: 100%; max-width: 500px;
+}
+
+/* --- FACEBOOK MOCK --- */
+.fb-feed .fb-header {
+  display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+}
+.fb-feed .fb-avatar {
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+  background: #e4e6eb;
+}
+.fb-feed .fb-avatar-placeholder {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #1877f2; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: .85rem; flex-shrink: 0;
+}
+.fb-feed .fb-meta { flex: 1; }
+.fb-feed .fb-name { font-size: .9375rem; font-weight: 600; color: #050505; }
+.fb-feed .fb-sponsored {
+  font-size: .8125rem; color: #65676b;
+  display: flex; align-items: center; gap: 4px;
+}
+.fb-feed .fb-sponsored svg { width: 12px; height: 12px; }
+.fb-feed .fb-dots {
+  color: #65676b; font-size: 1.2rem; cursor: default;
+  padding: 4px 8px;
+}
+.fb-feed .fb-text {
+  padding: 0 16px 12px; font-size: .9375rem; color: #050505;
+  line-height: 1.45; white-space: pre-wrap;
+}
+.fb-feed .fb-text.truncated { cursor: pointer; }
+.fb-feed .fb-text .see-more {
+  color: #65676b; font-weight: 500; cursor: pointer;
+}
+.fb-feed .fb-image-wrap {
+  width: 100%; position: relative; overflow: hidden; background: #f0f2f5;
+}
+.fb-feed .fb-image-wrap img {
+  width: 100%; display: block; object-fit: cover;
+}
+.fb-feed .fb-image-wrap.landscape img { aspect-ratio: 1200/628; }
+.fb-feed .fb-image-wrap.square img { aspect-ratio: 1/1; }
+.fb-feed .fb-image-wrap.story img { aspect-ratio: 9/16; max-height: 500px; }
+
+.fb-feed .fb-footer {
+  padding: 12px 16px; border-top: 1px solid #e4e6eb;
+  display: flex; align-items: center; gap: 8px;
+}
+.fb-feed .fb-footer-text { flex: 1; min-width: 0; }
+.fb-feed .fb-footer-desc {
+  font-size: .75rem; color: #65676b; text-transform: uppercase;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fb-feed .fb-footer-headline {
+  font-size: .9375rem; font-weight: 600; color: #050505;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fb-feed .fb-cta {
+  background: #e4e6eb; color: #050505; border: none;
+  padding: 8px 16px; border-radius: 6px; font-size: .9375rem;
+  font-weight: 600; cursor: default; white-space: nowrap;
+}
+
+/* --- INSTAGRAM MOCK --- */
+.ig-feed .ig-header {
+  display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+}
+.ig-feed .ig-avatar {
+  width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+  border: 2px solid #e4e6eb;
+}
+.ig-feed .ig-avatar-placeholder {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: .7rem; flex-shrink: 0;
+}
+.ig-feed .ig-meta { flex: 1; }
+.ig-feed .ig-name { font-size: .875rem; font-weight: 600; color: #262626; }
+.ig-feed .ig-sponsored { font-size: .75rem; color: #8e8e8e; }
+.ig-feed .ig-dots {
+  color: #262626; font-size: 1.1rem; cursor: default; padding: 4px 8px;
+}
+.ig-feed .ig-image-wrap {
+  width: 100%; position: relative; overflow: hidden; background: #fafafa;
+}
+.ig-feed .ig-image-wrap img {
+  width: 100%; display: block; object-fit: cover;
+}
+.ig-feed .ig-image-wrap.landscape img { aspect-ratio: 1200/628; }
+.ig-feed .ig-image-wrap.square img { aspect-ratio: 1/1; }
+.ig-feed .ig-image-wrap.story img { aspect-ratio: 9/16; max-height: 500px; }
+
+.ig-feed .ig-actions {
+  display: flex; align-items: center; gap: 14px; padding: 10px 14px 6px;
+}
+.ig-feed .ig-actions svg { width: 24px; height: 24px; cursor: default; }
+.ig-feed .ig-actions .ig-bookmark { margin-left: auto; }
+.ig-feed .ig-cta-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px 10px; border-bottom: 1px solid #efefef;
+}
+.ig-feed .ig-cta-bar .ig-learn {
+  font-size: .875rem; font-weight: 600; color: #262626;
+}
+.ig-feed .ig-cta-bar svg { width: 16px; height: 16px; color: #262626; }
+.ig-feed .ig-text {
+  padding: 8px 14px 12px; font-size: .875rem; color: #262626;
+  line-height: 1.45; white-space: pre-wrap;
+}
+.ig-feed .ig-text .ig-username { font-weight: 600; margin-right: 6px; }
+.ig-feed .ig-text.truncated { cursor: pointer; }
+.ig-feed .ig-text .see-more {
+  color: #8e8e8e; font-weight: 400; cursor: pointer;
+}
+
+/* ===== COPY COLUMN (RIGHT) ===== */
+.copy-col { padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; }
+
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  display: inline-block; padding: 4px 12px; border-radius: 6px;
+  font-size: .8rem; font-weight: 600; text-transform: capitalize;
+}
+.tag-angle { background: #e7f3ff; color: #1877f2; }
+.tag-placement { background: #f0f2f5; color: #65676b; }
+.tag-format { background: #f0f2f5; color: #65676b; }
+
+.copy-section {}
+.copy-label {
+  font-size: .75rem; font-weight: 600; color: #65676b;
+  text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px;
+}
+.copy-value {
+  font-size: .95rem; color: #1c1e21; white-space: pre-wrap; line-height: 1.55;
+}
+.copy-value.headline { font-size: 1.1rem; font-weight: 600; }
+
+.lp-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #1877f2; color: #fff; padding: 10px 20px;
+  border-radius: 8px; font-size: .9rem; font-weight: 600;
+  transition: background .15s; align-self: flex-start;
+}
+.lp-link:hover { background: #166fe5; text-decoration: none; }
+.lp-link svg { width: 16px; height: 16px; }
+
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #f0f2f5; color: #65676b; border: none;
+  padding: 8px 16px; border-radius: 8px; font-size: .85rem;
+  font-weight: 500; cursor: pointer; transition: all .15s;
+  align-self: flex-start;
+}
+.copy-btn:hover { background: #e4e6eb; color: #1c1e21; }
+.copy-btn.copied { background: #e7f6e9; color: #31a24c; }
+.copy-btn svg { width: 14px; height: 14px; }
+
+.ad-id { font-size: .75rem; color: #8a8d91; font-family: monospace; }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center; padding: 32px 24px; color: #8a8d91;
+  font-size: .8rem;
+}
+
+/* ===== NO RESULTS ===== */
+.no-results {
+  text-align: center; padding: 64px 24px; color: #65676b;
+}
+.no-results h3 { font-size: 1.2rem; margin-bottom: 8px; }
+
+/* ===== IMAGE PLACEHOLDER ===== */
+.img-placeholder {
+  width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 600; text-align: center;
+  padding: 24px;
+}
+.img-placeholder.landscape { aspect-ratio: 1200/628; }
+.img-placeholder.story { aspect-ratio: 9/16; max-height: 500px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .ad-card { grid-template-columns: 1fr; }
+  .mock-col { padding: 16px; }
+  .copy-col { padding: 20px; }
+  .header-inner { padding: 0 16px; }
+  .filter-inner { padding: 0 16px; }
+  .ad-grid { padding: 16px; gap: 20px; }
+  .ad-count { margin-left: 0; }
+  .filter-bar { top: auto; position: relative; }
+  .header { position: relative; }
+}
+@media (max-width: 600px) {
+  .header-title { font-size: 1.2rem; }
+  .feed-frame { max-width: 100%; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  body { background: #fff; }
+  .header { position: relative; border-bottom: 2px solid #1c1e21; }
+  .filter-bar { display: none; }
+  .ad-card {
+    break-inside: avoid; page-break-inside: avoid;
+    box-shadow: none; border: 1px solid #dddfe2;
+    grid-template-columns: 1fr 1fr;
+  }
+  .mock-col { background: #fff; }
+  .lp-link::after { content: " (" attr(href) ")"; font-weight: 400; font-size: .75rem; }
+  .copy-btn { display: none; }
+  .footer { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  Campaign laden...
+</div>
+
+<div id="app">
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-top">
+        <div id="headerLogo"></div>
+        <h1 class="header-title" id="headerTitle"></h1>
+        <span class="ad-count" id="adCount"></span>
+      </div>
+      <p class="campaign-brief" id="campaignBrief"></p>
+      <div class="lp-buttons" id="lpButtons"></div>
+    </div>
+  </header>
+
+  <div class="filter-bar">
+    <div class="filter-inner" id="filters"></div>
+  </div>
+
+  <main class="ad-grid" id="adGrid"></main>
+  <div class="no-results" id="noResults" style="display:none">
+    <h3>Geen advertenties gevonden</h3>
+    <p>Pas je filters aan om advertenties te zien.</p>
+  </div>
+
+  <footer class="footer">
+    Campagne presentatie &middot; Gegenereerd voor review &amp; goedkeuring
+  </footer>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ===== CONFIG ===== */
+  const params = new URLSearchParams(window.location.search);
+  const clientSlug = params.get('client') || 'uaf';
+  const jsonPath = `clients/${clientSlug}/campaign.json`;
+
+  /* ===== STATE ===== */
+  let campaign = null;
+  let activeFilters = { placement: 'all', angle: 'all', format: 'all' };
+
+  /* ===== ICONS ===== */
+  const icons = {
+    link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
+    copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    globe: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm-.5 1.04A7 7 0 001 8c0 .38.03.75.09 1.11L5 5.2V6l2 2v1l-1 1v2.07A7 7 0 017.5 1.04zm1 13.92V13l1-1 1-1h1l1.27-1.27A7 7 0 008.5 14.96z"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
+    comment: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>',
+    send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
+    bookmark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>',
+    chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  };
+
+  /* ===== LOAD DATA ===== */
+  fetch(jsonPath)
+    .then(r => { if (!r.ok) throw new Error(`${r.status}`); return r.json(); })
+    .then(data => { campaign = data; init(); })
+    .catch(err => {
+      document.getElementById('loading').innerHTML =
+        `<div style="text-align:center;color:#65676b">
+          <h3 style="margin-bottom:8px">Campaign niet gevonden</h3>
+          <p>Kon <code>${jsonPath}</code> niet laden.</p>
+          <p style="margin-top:8px;font-size:.85rem">Fout: ${err.message}</p>
+        </div>`;
+    });
+
+  /* ===== INIT ===== */
+  function init() {
+    document.title = `${campaign.client} — ${campaign.campaign_name}`;
+    renderHeader();
+    renderFilters();
+    renderAds();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+
+  /* ===== HEADER ===== */
+  function renderHeader() {
+    const logoEl = document.getElementById('headerLogo');
+    if (campaign.client_logo) {
+      const basePath = `clients/${clientSlug}/`;
+      const img = document.createElement('img');
+      img.src = basePath + campaign.client_logo;
+      img.alt = campaign.client;
+      img.className = 'client-logo';
+      img.onerror = () => {
+        logoEl.innerHTML = `<div class="client-logo-placeholder">${campaign.client.charAt(0)}</div>`;
+      };
+      logoEl.appendChild(img);
+    } else {
+      logoEl.innerHTML = `<div class="client-logo-placeholder">${campaign.client.charAt(0)}</div>`;
+    }
+
+    document.getElementById('headerTitle').textContent = campaign.campaign_name;
+    document.getElementById('campaignBrief').textContent = campaign.campaign_brief;
+    document.getElementById('adCount').textContent = `${campaign.ads.length} advertentie${campaign.ads.length !== 1 ? 's' : ''}`;
+
+    const lpContainer = document.getElementById('lpButtons');
+    (campaign.landing_pages || []).forEach(lp => {
+      lpContainer.innerHTML += `<a href="${esc(lp.url)}" target="_blank" rel="noopener" class="lp-btn">${icons.link} ${esc(lp.label)}</a>`;
+    });
+  }
+
+  /* ===== FILTERS ===== */
+  function renderFilters() {
+    const placements = [...new Set(campaign.ads.map(a => a.placement))];
+    const angles = [...new Set(campaign.ads.map(a => a.angle))];
+    const formats = [...new Set(campaign.ads.map(a => a.format))];
+
+    const container = document.getElementById('filters');
+    let html = '';
+
+    html += buildFilterGroup('Placement', 'placement', placements, v => placementLabel(v));
+    html += buildFilterGroup('Angle', 'angle', angles);
+    html += buildFilterGroup('Format', 'format', formats);
+
+    container.innerHTML = html;
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      const group = btn.dataset.group;
+      const value = btn.dataset.value;
+      activeFilters[group] = value;
+      container.querySelectorAll(`.filter-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  }
+
+  function buildFilterGroup(label, group, values, formatter) {
+    let html = `<div class="filter-group"><span class="filter-label">${label}</span>`;
+    html += `<button class="filter-btn active" data-group="${group}" data-value="all">Alles</button>`;
+    values.forEach(v => {
+      const display = formatter ? formatter(v) : v;
+      html += `<button class="filter-btn" data-group="${group}" data-value="${esc(v)}">${esc(display)}</button>`;
+    });
+    html += `</div>`;
+    return html;
+  }
+
+  function applyFilters() {
+    let visibleCount = 0;
+    campaign.ads.forEach(ad => {
+      const card = document.getElementById(`ad-${ad.id}`);
+      if (!card) return;
+      const show =
+        (activeFilters.placement === 'all' || ad.placement === activeFilters.placement) &&
+        (activeFilters.angle === 'all' || ad.angle === activeFilters.angle) &&
+        (activeFilters.format === 'all' || ad.format === activeFilters.format);
+      card.dataset.visible = show;
+      if (show) visibleCount++;
+    });
+    document.getElementById('adCount').textContent = `${visibleCount} advertentie${visibleCount !== 1 ? 's' : ''}`;
+    document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  /* ===== RENDER ADS ===== */
+  function renderAds() {
+    const grid = document.getElementById('adGrid');
+    const basePath = `clients/${clientSlug}/`;
+
+    campaign.ads.forEach(ad => {
+      const isIG = ad.placement === 'instagram_feed';
+      const formatClass = getFormatClass(ad.format);
+      const mockup = isIG ? renderInstagramMock(ad, basePath, formatClass) : renderFacebookMock(ad, basePath, formatClass);
+
+      const card = document.createElement('div');
+      card.className = 'ad-card';
+      card.id = `ad-${ad.id}`;
+      card.dataset.visible = 'true';
+
+      card.innerHTML = `
+        <div class="mock-col">${mockup}</div>
+        <div class="copy-col">
+          <div class="tag-row">
+            <span class="tag tag-angle">${esc(ad.angle)}</span>
+            <span class="tag tag-placement">${esc(placementLabel(ad.placement))}</span>
+            <span class="tag tag-format">${esc(ad.format)}</span>
+          </div>
+          <div class="copy-section">
+            <div class="copy-label">Primary text</div>
+            <div class="copy-value">${esc(ad.copy.primary_text)}</div>
+          </div>
+          <div class="copy-section">
+            <div class="copy-label">Headline</div>
+            <div class="copy-value headline">${esc(ad.copy.headline)}</div>
+          </div>
+          <div class="copy-section">
+            <div class="copy-label">Description</div>
+            <div class="copy-value">${esc(ad.copy.description)}</div>
+          </div>
+          <div class="copy-section">
+            <div class="copy-label">CTA</div>
+            <div class="copy-value">${esc(ad.copy.cta)}</div>
+          </div>
+          <a href="${esc(ad.landing_page_url)}" target="_blank" rel="noopener" class="lp-link">
+            ${icons.link} Bekijk landingspagina
+          </a>
+          <button class="copy-btn" data-ad-id="${esc(ad.id)}">
+            ${icons.copy} Kopieer alle tekst
+          </button>
+          <div class="ad-id">ID: ${esc(ad.id)}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    /* Copy buttons */
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      const ad = campaign.ads.find(a => a.id === btn.dataset.adId);
+      if (!ad) return;
+      const text = [
+        `Primary text:\n${ad.copy.primary_text}`,
+        `Headline: ${ad.copy.headline}`,
+        `Description: ${ad.copy.description}`,
+        `CTA: ${ad.copy.cta}`,
+        `Landing page: ${ad.landing_page_url}`,
+      ].join('\n\n');
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerHTML = `${icons.check} Gekopieerd!`;
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = `${icons.copy} Kopieer alle tekst`;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+
+    /* Truncated text toggle */
+    grid.addEventListener('click', e => {
+      const seeMore = e.target.closest('.see-more');
+      if (!seeMore) return;
+      const textEl = seeMore.closest('.fb-text, .ig-text');
+      if (!textEl) return;
+      textEl.innerHTML = textEl.dataset.full;
+      textEl.classList.remove('truncated');
+    });
+  }
+
+  /* ===== FACEBOOK MOCK ===== */
+  function renderFacebookMock(ad, basePath, formatClass) {
+    const truncated = truncateText(ad.copy.primary_text, 125);
+    const fullText = esc(ad.copy.primary_text);
+    const displayText = truncated.isTruncated
+      ? `${esc(truncated.text)}<span class="see-more">... meer weergeven</span>`
+      : fullText;
+
+    return `
+      <div class="feed-frame fb-feed">
+        <div class="fb-header">
+          ${renderAvatar(ad, basePath, 'fb')}
+          <div class="fb-meta">
+            <div class="fb-name">${esc(campaign.client)}</div>
+            <div class="fb-sponsored">Gesponsord · ${icons.globe}</div>
+          </div>
+          <span class="fb-dots">···</span>
+        </div>
+        <div class="fb-text${truncated.isTruncated ? ' truncated' : ''}" data-full="${escAttr(fullText)}">${displayText}</div>
+        <div class="fb-image-wrap ${formatClass}">
+          ${renderImage(ad, basePath, formatClass)}
+        </div>
+        <div class="fb-footer">
+          <div class="fb-footer-text">
+            <div class="fb-footer-desc">${esc(ad.copy.description)}</div>
+            <div class="fb-footer-headline">${esc(ad.copy.headline)}</div>
+          </div>
+          <button class="fb-cta">${esc(ad.copy.cta)}</button>
+        </div>
+      </div>`;
+  }
+
+  /* ===== INSTAGRAM MOCK ===== */
+  function renderInstagramMock(ad, basePath, formatClass) {
+    const clientLower = campaign.client.toLowerCase().replace(/\s+/g, '');
+    const truncated = truncateText(ad.copy.primary_text, 100);
+    const fullCaption = `<span class="ig-username">${esc(clientLower)}</span>${esc(ad.copy.primary_text)}`;
+    const displayCaption = truncated.isTruncated
+      ? `<span class="ig-username">${esc(clientLower)}</span>${esc(truncated.text)}<span class="see-more">... meer</span>`
+      : fullCaption;
+
+    return `
+      <div class="feed-frame ig-feed">
+        <div class="ig-header">
+          ${renderAvatar(ad, basePath, 'ig')}
+          <div class="ig-meta">
+            <div class="ig-name">${esc(clientLower)}</div>
+            <div class="ig-sponsored">Gesponsord</div>
+          </div>
+          <span class="ig-dots">···</span>
+        </div>
+        <div class="ig-image-wrap ${formatClass}">
+          ${renderImage(ad, basePath, formatClass)}
+        </div>
+        <div class="ig-actions">
+          ${icons.heart} ${icons.comment} ${icons.send}
+          <span class="ig-bookmark">${icons.bookmark}</span>
+        </div>
+        <div class="ig-cta-bar">
+          <span class="ig-learn">${esc(ad.copy.cta)}</span>
+          ${icons.chevron}
+        </div>
+        <div class="ig-text${truncated.isTruncated ? ' truncated' : ''}" data-full="${escAttr(fullCaption)}">${displayCaption}</div>
+      </div>`;
+  }
+
+  /* ===== HELPERS ===== */
+  function renderAvatar(ad, basePath, type) {
+    const prefix = type === 'fb' ? 'fb' : 'ig';
+    const initial = campaign.client.charAt(0);
+    if (campaign.client_logo) {
+      return `<img class="${prefix}-avatar" src="${basePath}${campaign.client_logo}" alt="${esc(campaign.client)}"
+        onerror="this.outerHTML='<div class=\\'${prefix}-avatar-placeholder\\'>${initial}</div>'">`;
+    }
+    return `<div class="${prefix}-avatar-placeholder">${initial}</div>`;
+  }
+
+  function renderImage(ad, basePath, formatClass) {
+    if (ad.image) {
+      return `<img src="${basePath}${ad.image}" alt="${esc(ad.copy.headline)}"
+        onerror="this.outerHTML='<div class=\\'img-placeholder ${formatClass}\\'>${esc(ad.copy.headline)}</div>'">`;
+    }
+    return `<div class="img-placeholder ${formatClass}">${esc(ad.copy.headline)}</div>`;
+  }
+
+  function getFormatClass(format) {
+    if (!format) return 'square';
+    const [w, h] = format.split('x').map(Number);
+    if (h > w * 1.3) return 'story';
+    if (w > h * 1.3) return 'landscape';
+    return 'square';
+  }
+
+  function truncateText(text, maxLen) {
+    if (text.length <= maxLen) return { text, isTruncated: false };
+    const cut = text.lastIndexOf(' ', maxLen);
+    return { text: text.substring(0, cut > 0 ? cut : maxLen), isTruncated: true };
+  }
+
+  function placementLabel(p) {
+    const map = {
+      facebook_feed: 'Facebook Feed',
+      instagram_feed: 'Instagram Feed',
+      facebook_story: 'Facebook Story',
+      instagram_story: 'Instagram Story',
+    };
+    return map[p] || p;
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function escAttr(str) {
+    return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+})();
+</script>
+</body>
+</html>
