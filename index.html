@@ -277,6 +277,122 @@ a:hover { text-decoration: underline; }
 
 .ad-id { font-size: .75rem; color: #8a8d91; font-family: monospace; }
 
+/* ===== FEEDBACK SUMMARY (HEADER) ===== */
+.feedback-summary {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;
+}
+.feedback-summary-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .85rem; font-weight: 600; padding: 4px 14px;
+  border-radius: 20px;
+}
+.feedback-summary-item.approved { background: #e7f6e9; color: #31a24c; }
+.feedback-summary-item.changes { background: #fef3e2; color: #f0932b; }
+.feedback-summary-item.pending { background: #f0f2f5; color: #65676b; }
+
+/* ===== FEEDBACK SECTION ===== */
+.feedback-section {
+  border-top: 1px solid #e4e6eb; padding-top: 20px; margin-top: 4px;
+}
+.feedback-section-title {
+  font-size: .8rem; font-weight: 600; color: #65676b;
+  text-transform: uppercase; letter-spacing: .04em; margin-bottom: 12px;
+}
+.feedback-not-configured {
+  font-size: .85rem; color: #8a8d91; font-style: italic;
+}
+
+/* Status buttons */
+.feedback-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.feedback-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 8px; border: 2px solid transparent;
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  transition: all .15s; background: #f0f2f5; color: #1c1e21;
+}
+.feedback-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.feedback-btn.btn-approve:hover, .feedback-btn.btn-approve.selected {
+  background: #e7f6e9; color: #31a24c; border-color: #31a24c;
+}
+.feedback-btn.btn-change:hover, .feedback-btn.btn-change.selected {
+  background: #fef3e2; color: #f0932b; border-color: #f0932b;
+}
+.feedback-btn svg { width: 16px; height: 16px; }
+
+/* Comment input */
+.feedback-form { margin-top: 12px; display: none; }
+.feedback-form.visible { display: block; }
+.feedback-textarea {
+  width: 100%; min-height: 80px; padding: 12px; border: 1px solid #dddfe2;
+  border-radius: 8px; font-family: inherit; font-size: .9rem; resize: vertical;
+  line-height: 1.5; transition: border-color .15s;
+}
+.feedback-textarea:focus { outline: none; border-color: #1877f2; }
+.feedback-textarea::placeholder { color: #8a8d91; }
+.feedback-submit {
+  margin-top: 8px; display: inline-flex; align-items: center; gap: 6px;
+  background: #1877f2; color: #fff; border: none; padding: 10px 20px;
+  border-radius: 8px; font-size: .9rem; font-weight: 600; cursor: pointer;
+  transition: background .15s;
+}
+.feedback-submit:hover { background: #166fe5; }
+.feedback-submit:disabled { background: #a0c4f1; cursor: not-allowed; }
+.feedback-submit svg { width: 14px; height: 14px; }
+
+/* Status badge on card */
+.ad-card.status-approved { border-left: 4px solid #31a24c; }
+.ad-card.status-changes { border-left: 4px solid #f0932b; }
+.status-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 6px;
+  font-size: .8rem; font-weight: 600; color: #fff;
+}
+.status-badge.badge-approved { background: #31a24c; }
+.status-badge.badge-changes { background: #f0932b; }
+
+/* Comments list */
+.feedback-comments { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+.feedback-comment {
+  background: #f0f2f5; border-radius: 10px; padding: 12px 16px;
+}
+.feedback-comment-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+}
+.feedback-comment-name { font-size: .85rem; font-weight: 700; color: #1c1e21; }
+.feedback-comment-status {
+  font-size: .75rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; color: #fff;
+}
+.feedback-comment-status.approved { background: #31a24c; }
+.feedback-comment-status.changes { background: #f0932b; }
+.feedback-comment-time { font-size: .75rem; color: #8a8d91; margin-left: auto; }
+.feedback-comment-text { font-size: .9rem; color: #1c1e21; line-height: 1.5; white-space: pre-wrap; }
+
+/* Reviewer modal */
+.reviewer-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.reviewer-modal {
+  background: #fff; border-radius: 12px; padding: 32px;
+  max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+.reviewer-modal h3 { font-size: 1.2rem; margin-bottom: 8px; color: #1c1e21; }
+.reviewer-modal p { font-size: .9rem; color: #65676b; margin-bottom: 16px; }
+.reviewer-modal input {
+  width: 100%; padding: 12px; border: 1px solid #dddfe2;
+  border-radius: 8px; font-size: .95rem; font-family: inherit;
+}
+.reviewer-modal input:focus { outline: none; border-color: #1877f2; }
+.reviewer-modal-btn {
+  margin-top: 12px; width: 100%; padding: 12px; background: #1877f2;
+  color: #fff; border: none; border-radius: 8px; font-size: .95rem;
+  font-weight: 600; cursor: pointer; transition: background .15s;
+}
+.reviewer-modal-btn:hover { background: #166fe5; }
+.reviewer-modal-btn:disabled { background: #a0c4f1; cursor: not-allowed; }
+
 /* ===== FOOTER ===== */
 .footer {
   text-align: center; padding: 32px 24px; color: #8a8d91;
@@ -329,6 +445,9 @@ a:hover { text-decoration: underline; }
   .mock-col { background: #fff; }
   .lp-link::after { content: " (" attr(href) ")"; font-weight: 400; font-size: .75rem; }
   .copy-btn { display: none; }
+  .feedback-actions { display: none; }
+  .feedback-form { display: none !important; }
+  .feedback-submit { display: none; }
   .footer { display: none; }
 }
 </style>
@@ -350,8 +469,11 @@ a:hover { text-decoration: underline; }
       </div>
       <p class="campaign-brief" id="campaignBrief"></p>
       <div class="lp-buttons" id="lpButtons"></div>
+      <div class="feedback-summary" id="feedbackSummary" style="display:none"></div>
     </div>
   </header>
+
+  <div id="reviewerModal" style="display:none"></div>
 
   <div class="filter-bar">
     <div class="filter-inner" id="filters"></div>
@@ -380,6 +502,8 @@ a:hover { text-decoration: underline; }
   /* ===== STATE ===== */
   let campaign = null;
   let activeFilters = { placement: 'all', angle: 'all', format: 'all' };
+  let feedbackData = {};   // { ad_id: [ { status, comment, reviewer_name, timestamp } ] }
+  let reviewerName = localStorage.getItem('feedback_reviewer_name') || '';
 
   /* ===== ICONS ===== */
   const icons = {
@@ -392,6 +516,9 @@ a:hover { text-decoration: underline; }
     send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
     bookmark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>',
     chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>',
+    approve: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+    submit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>',
   };
 
   /* ===== LOAD DATA ===== */
@@ -415,6 +542,7 @@ a:hover { text-decoration: underline; }
     renderAds();
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = 'block';
+    loadFeedback();
   }
 
   /* ===== HEADER ===== */
@@ -512,6 +640,31 @@ a:hover { text-decoration: underline; }
       card.id = `ad-${ad.id}`;
       card.dataset.visible = 'true';
 
+      const feedbackHTML = campaign.feedback_url
+        ? `<div class="feedback-section" id="feedback-${ad.id}">
+            <div class="feedback-section-title">Feedback</div>
+            <div class="feedback-status-badge" id="badge-${ad.id}"></div>
+            <div class="feedback-actions">
+              <button class="feedback-btn btn-approve" data-ad-id="${esc(ad.id)}" data-status="goedgekeurd">
+                ${icons.approve} Goedgekeurd
+              </button>
+              <button class="feedback-btn btn-change" data-ad-id="${esc(ad.id)}" data-status="wijziging_nodig">
+                ${icons.edit} Wijziging nodig
+              </button>
+            </div>
+            <div class="feedback-form" id="form-${ad.id}">
+              <textarea class="feedback-textarea" id="comment-${ad.id}" placeholder="Schrijf je feedback hier... (optioneel bij goedkeuring)"></textarea>
+              <button class="feedback-submit" id="submit-${ad.id}" data-ad-id="${esc(ad.id)}">
+                ${icons.submit} Verstuur feedback
+              </button>
+            </div>
+            <div class="feedback-comments" id="comments-${ad.id}"></div>
+          </div>`
+        : `<div class="feedback-section">
+            <div class="feedback-section-title">Feedback</div>
+            <p class="feedback-not-configured">Feedback nog niet geconfigureerd</p>
+          </div>`;
+
       card.innerHTML = `
         <div class="mock-col">${mockup}</div>
         <div class="copy-col">
@@ -543,6 +696,7 @@ a:hover { text-decoration: underline; }
             ${icons.copy} Kopieer alle tekst
           </button>
           <div class="ad-id">ID: ${esc(ad.id)}</div>
+          ${feedbackHTML}
         </div>
       `;
       grid.appendChild(card);
@@ -579,6 +733,44 @@ a:hover { text-decoration: underline; }
       if (!textEl) return;
       textEl.innerHTML = textEl.dataset.full;
       textEl.classList.remove('truncated');
+    });
+
+    /* Feedback button clicks */
+    grid.addEventListener('click', e => {
+      const fbBtn = e.target.closest('.feedback-btn');
+      if (!fbBtn) return;
+      const adId = fbBtn.dataset.adId;
+      const status = fbBtn.dataset.status;
+
+      // Deselect siblings, select this one
+      const parent = fbBtn.closest('.feedback-actions');
+      parent.querySelectorAll('.feedback-btn').forEach(b => b.classList.remove('selected'));
+      fbBtn.classList.add('selected');
+
+      // Show form
+      const form = document.getElementById(`form-${adId}`);
+      if (form) {
+        form.classList.add('visible');
+        form.dataset.status = status;
+        const ta = document.getElementById(`comment-${adId}`);
+        if (status === 'wijziging_nodig' && ta) ta.focus();
+      }
+    });
+
+    /* Submit feedback */
+    grid.addEventListener('click', e => {
+      const submitBtn = e.target.closest('.feedback-submit');
+      if (!submitBtn) return;
+      const adId = submitBtn.dataset.adId;
+      const form = document.getElementById(`form-${adId}`);
+      const status = form ? form.dataset.status : '';
+      const comment = (document.getElementById(`comment-${adId}`) || {}).value || '';
+
+      if (!status) return;
+
+      ensureReviewerName(() => {
+        submitFeedback(adId, status, comment, submitBtn);
+      });
     });
   }
 
@@ -700,6 +892,207 @@ a:hover { text-decoration: underline; }
 
   function escAttr(str) {
     return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  /* ===== FEEDBACK SYSTEM ===== */
+
+  function loadFeedback() {
+    if (!campaign.feedback_url) return;
+    fetch(`${campaign.feedback_url}?client=${encodeURIComponent(campaign.client)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.success || !data.feedback) return;
+        feedbackData = {};
+        data.feedback.forEach(fb => {
+          if (!feedbackData[fb.ad_id]) feedbackData[fb.ad_id] = [];
+          feedbackData[fb.ad_id].push(fb);
+        });
+        // Sort each ad's feedback chronologically
+        Object.keys(feedbackData).forEach(adId => {
+          feedbackData[adId].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+        });
+        renderAllFeedback();
+        updateFeedbackSummary();
+      })
+      .catch(() => { /* silently fail — feedback is optional */ });
+  }
+
+  function renderAllFeedback() {
+    campaign.ads.forEach(ad => {
+      renderAdFeedback(ad.id);
+    });
+  }
+
+  function renderAdFeedback(adId) {
+    const comments = feedbackData[adId] || [];
+    const container = document.getElementById(`comments-${adId}`);
+    if (!container) return;
+
+    container.innerHTML = comments.map(fb => {
+      const statusLabel = fb.status === 'goedgekeurd' ? 'Goedgekeurd' : 'Wijziging nodig';
+      const statusClass = fb.status === 'goedgekeurd' ? 'approved' : 'changes';
+      const time = formatTimestamp(fb.timestamp);
+      const commentText = fb.comment ? `<div class="feedback-comment-text">${esc(fb.comment)}</div>` : '';
+      return `
+        <div class="feedback-comment">
+          <div class="feedback-comment-header">
+            <span class="feedback-comment-name">${esc(fb.reviewer_name)}</span>
+            <span class="feedback-comment-status ${statusClass}">${statusLabel}</span>
+            <span class="feedback-comment-time">${time}</span>
+          </div>
+          ${commentText}
+        </div>`;
+    }).join('');
+
+    // Update card border status based on latest feedback
+    const card = document.getElementById(`ad-${adId}`);
+    if (card) {
+      card.classList.remove('status-approved', 'status-changes');
+      if (comments.length > 0) {
+        const latest = comments[comments.length - 1];
+        card.classList.add(latest.status === 'goedgekeurd' ? 'status-approved' : 'status-changes');
+      }
+    }
+
+    // Update badge
+    const badgeEl = document.getElementById(`badge-${adId}`);
+    if (badgeEl && comments.length > 0) {
+      const latest = comments[comments.length - 1];
+      const statusLabel = latest.status === 'goedgekeurd' ? 'Goedgekeurd' : 'Wijziging nodig';
+      const badgeClass = latest.status === 'goedgekeurd' ? 'badge-approved' : 'badge-changes';
+      badgeEl.innerHTML = `<span class="status-badge ${badgeClass}">${latest.status === 'goedgekeurd' ? icons.approve : icons.edit} ${statusLabel}</span>`;
+    }
+  }
+
+  function updateFeedbackSummary() {
+    if (!campaign.feedback_url) return;
+    const summaryEl = document.getElementById('feedbackSummary');
+    if (!summaryEl) return;
+
+    let approved = 0, changes = 0, pending = 0;
+    campaign.ads.forEach(ad => {
+      const comments = feedbackData[ad.id] || [];
+      if (comments.length === 0) {
+        pending++;
+      } else {
+        const latest = comments[comments.length - 1];
+        if (latest.status === 'goedgekeurd') approved++;
+        else changes++;
+      }
+    });
+
+    summaryEl.style.display = 'flex';
+    summaryEl.innerHTML = `
+      <span class="feedback-summary-item approved">${icons.approve} ${approved} goedgekeurd</span>
+      <span class="feedback-summary-item changes">${icons.edit} ${changes} wijziging nodig</span>
+      <span class="feedback-summary-item pending">${pending} nog niet beoordeeld</span>
+    `;
+  }
+
+  function submitFeedback(adId, status, comment, submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Versturen...';
+
+    const payload = {
+      client: campaign.client,
+      ad_id: adId,
+      status: status,
+      comment: comment,
+      reviewer_name: reviewerName
+    };
+
+    fetch(campaign.feedback_url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' }, // Apps Script needs text/plain to avoid CORS preflight
+      body: JSON.stringify(payload),
+    })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          // Add to local state
+          if (!feedbackData[adId]) feedbackData[adId] = [];
+          feedbackData[adId].push({
+            timestamp: data.timestamp || new Date().toISOString(),
+            client: campaign.client,
+            ad_id: adId,
+            status: status,
+            comment: comment,
+            reviewer_name: reviewerName
+          });
+          renderAdFeedback(adId);
+          updateFeedbackSummary();
+
+          // Reset form
+          const textarea = document.getElementById(`comment-${adId}`);
+          if (textarea) textarea.value = '';
+          const form = document.getElementById(`form-${adId}`);
+          if (form) { form.classList.remove('visible'); form.dataset.status = ''; }
+          const actions = form ? form.previousElementSibling : null;
+          if (actions) actions.querySelectorAll('.feedback-btn').forEach(b => b.classList.remove('selected'));
+        } else {
+          alert('Fout bij versturen: ' + (data.error || 'Onbekende fout'));
+        }
+      })
+      .catch(err => {
+        alert('Kon feedback niet versturen. Controleer je internetverbinding.');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `${icons.submit} Verstuur feedback`;
+      });
+  }
+
+  function ensureReviewerName(callback) {
+    if (reviewerName) { callback(); return; }
+
+    const modalContainer = document.getElementById('reviewerModal');
+    modalContainer.style.display = 'block';
+    modalContainer.innerHTML = `
+      <div class="reviewer-modal-overlay">
+        <div class="reviewer-modal">
+          <h3>Welkom!</h3>
+          <p>Voer je naam in zodat we je feedback kunnen toewijzen.</p>
+          <input type="text" id="reviewerNameInput" placeholder="Je naam" autofocus>
+          <button class="reviewer-modal-btn" id="reviewerNameSubmit" disabled>Doorgaan</button>
+        </div>
+      </div>`;
+
+    const input = document.getElementById('reviewerNameInput');
+    const btn = document.getElementById('reviewerNameSubmit');
+
+    input.addEventListener('input', () => {
+      btn.disabled = !input.value.trim();
+    });
+
+    const confirm = () => {
+      const name = input.value.trim();
+      if (!name) return;
+      reviewerName = name;
+      localStorage.setItem('feedback_reviewer_name', name);
+      modalContainer.style.display = 'none';
+      modalContainer.innerHTML = '';
+      callback();
+    };
+
+    btn.addEventListener('click', confirm);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && input.value.trim()) confirm();
+    });
+  }
+
+  function formatTimestamp(ts) {
+    if (!ts) return '';
+    try {
+      const d = new Date(ts);
+      const now = new Date();
+      const diff = now - d;
+      if (diff < 60000) return 'zojuist';
+      if (diff < 3600000) return `${Math.floor(diff / 60000)} min geleden`;
+      if (diff < 86400000) return `${Math.floor(diff / 3600000)} uur geleden`;
+      return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return ts;
+    }
   }
 })();
 </script>
